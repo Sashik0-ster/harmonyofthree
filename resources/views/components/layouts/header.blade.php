@@ -1,7 +1,13 @@
-<div>
+<div id="logo">
+    <img src="/img/logoS.png" alt="">
+</div>
+
+
+<div id="app_name">
     <div>
-        <h1>ОТГ "Жива"</h1>
+        <h1 class="text text-4xl">ОТГ "Жива"</h1>
     </div>
+
     <div>
         <h2>об'єднання творців гармонії</h2>
     </div>

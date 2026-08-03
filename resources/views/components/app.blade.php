@@ -18,19 +18,21 @@
         <x-layouts.header />
     </header>
 
+    <hr>
+
+    <main>
+        {{ $slot }}
+    </main>
+
     <nav>
 
         <x-menu.sidebar-component />
 
     </nav>
 
-    <main>
-        {{ $slot }}
-    </main>
-
-    <footer>
+    {{-- <footer>
         <x-layouts.footer />
-    </footer>
+    </footer> --}}
 
 </body>
 
