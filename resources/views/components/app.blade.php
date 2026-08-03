@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <title>{{ $title ?? 'Document' }}</title>
 </head>
