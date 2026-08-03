@@ -1,3 +1,8 @@
 <div>
-    <x-menu.sidebar-component />
+    <div>
+        <h1>ОТГ "Жива"</h1>
+    </div>
+    <div>
+        <h2>об'єднання творців гармонії</h2>
+    </div>
 </div>

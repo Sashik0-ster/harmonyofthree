@@ -18,6 +18,12 @@
         <x-layouts.header />
     </header>
 
+    <nav>
+
+        <x-menu.sidebar-component />
+
+    </nav>
+
     <main>
         {{ $slot }}
     </main>
