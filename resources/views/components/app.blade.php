@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8">
@@ -8,19 +8,22 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <title>Document</title>
+    <title>{{ $title ?? 'Document' }}</title>
 </head>
 
-<header>
-    <x-menu.sidebar-component />
-</header>
+<body class="min-h-full flex flex-col items-center m-0">
 
+    <header>
+        <x-layouts.header />
+    </header>
 
+    <main>
+        {{ $slot }}
+    </main>
 
-
-<body>
-
-    {{ $slot }}
+    <footer>
+        <x-layouts.footer />
+    </footer>
 
 </body>
 

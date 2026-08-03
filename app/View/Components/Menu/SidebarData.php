@@ -4,18 +4,21 @@ namespace App\View\Components\Menu;
 
 trait SidebarData
 {
+    public array $menuItems = [];
 
-    public array $menuItems;
-
-    public function getMenuItems()
+    public function getMenuItems(): array
     {
 
-        $this->menuItems = [
-            ['title' => 'Main', 'route' => '', 'icon' => 'icons8-lotus-100.png'],
-            ['title' => 'Soul', 'route' => '', 'icon' => 'icons8-meditation-100.png'],
-            ['title' => 'Body', 'route' => '', 'icon' => 'icons8-priest-100.png'],
-            ['title' => 'Maind', 'route' => '', 'icon' => 'icons8-destiny-100.png'],
-            ['title' => 'Blog', 'route' => '', 'icon' => 'icons8-temple-100.png'],
+        if (!empty($this->menuItems)) {
+            return $this->menuItems;
+        }
+
+        return $this->menuItems = [
+            ['title' => 'Main', 'route' => '#', 'icon' => 'icons8-lotus-100.png'],
+            ['title' => 'Soul', 'route' => '#', 'icon' => 'icons8-meditation-100.png'],
+            ['title' => 'Body', 'route' => '#', 'icon' => 'icons8-priest-100.png'],
+            ['title' => 'Mind', 'route' => '#', 'icon' => 'icons8-destiny-100.png'],
+            ['title' => 'Blog', 'route' => '#', 'icon' => 'icons8-temple-100.png'],
         ];
     }
 }

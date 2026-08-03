@@ -1,3 +1,5 @@
-<x-app.app>
+<x-app>
 
-</x-app.app>
+    <h1>Proba</h1>
+
+</x-app>
