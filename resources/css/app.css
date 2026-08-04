@@ -32,7 +32,6 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 15px;
     background: rgb(255, 236, 249);
     box-sizing: border-box;
 }
@@ -43,7 +42,6 @@ nav {
     justify-content: center;
     background: rgb(255, 236, 249);
     box-sizing: border-box;
-    padding-bottom: 5px;
 }
 
 footer {
@@ -51,6 +49,7 @@ footer {
 }
 
 main {
+    border-top: 1px solid rgb(10, 240, 240);
     flex: 1 0 auto;
 }
 
