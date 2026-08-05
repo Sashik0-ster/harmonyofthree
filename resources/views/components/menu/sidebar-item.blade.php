@@ -3,10 +3,10 @@
 <a href="{{ $href }}"
     {{ $attributes->merge([
         'class' =>
-            'flex items-center p-1 text-base text-black hover:bg-teal-500 hover:rounded-t-lg group dark:text-gray-500 dark:hover:bg-teal-500 dark:hover:text-white' .
+            'flex items-center p-1 text-base group mt-1 rounded-t-lg transition-colors ' .
             ($active
-                ? 'mt-1 bg-teal-500 text-white rounded-t-lg dark:bg-teal-500 dark:text-white'
-                : 'mt-1 text-black hover:bg-teal-500 dark:text-gray-500 dark:hover:bg-teal-500 dark:hover:text-white'),
+                ? 'bg-accent text-white'
+                : 'text-black hover:bg-accent hover:text-white dark:text-gray-400 dark:hover:bg-accent dark:hover:text-white'),
     ]) }}>
 
     <span class="flex items-center">{{ $slot }}</span>

@@ -9,11 +9,68 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+@theme {
+    --color-accent: #B23A6B;
+    --color-accent-light: #E8A0C0;
+    --color-accent-dark: #7A2549;
+    --color-soul: #2E7DA6;
+    --color-body: #E8B923;
+    --color-mind: #4C9C64;
+}
+
+
+:root {
+    /* ===== Базові кольори (фон/текст) ===== */
+    --color-bg: #FFECF9;
+    /* основний рожевий фон (header/nav/main/footer) */
+    --color-bg-soft: #FCE8F0;
+    /* трохи темніший відтінок для карток/секцій */
+    --color-surface: #FFFFFF;
+    /* білі картки/поверхні */
+    --color-text: #2C2C2C;
+    /* основний текст */
+    --color-text-muted: #6B6B6B;
+    /* другорядний текст (мета, дати) */
+    --color-border: #E8B4CE;
+    /* межі, розділювачі у тон фону */
+
+    /* ===== Акцентний колір (замість #38b2ac, узгоджений з палеткою) ===== */
+    --color-accent: #B23A6B;
+    /* малиново-рожевий — основний CTA/лінк */
+    --color-accent-light: #E8A0C0;
+    --color-accent-dark: #7A2549;
+
+    /* ===== Soul (синій) ===== */
+    --color-soul: #2E7DA6;
+    --color-soul-dark: #123C52;
+    --color-soul-light: #6FB7DB;
+
+    /* ===== Body (золотий) ===== */
+    --color-body: #E8B923;
+    --color-body-dark: #B8850F;
+    --color-body-light: #F7DA7A;
+
+    /* ===== Mind (зелений) ===== */
+    --color-mind: #4C9C64;
+    --color-mind-dark: #255C3C;
+    --color-mind-light: #8FD09E;
+
+    /* ===== Стани ===== */
+    --color-success: #4C9C64;
+    --color-warning: #E8B923;
+    --color-danger: #C0392B;
+
+    /* ===== Тінь / оверлей ===== */
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --color-overlay: rgba(44, 44, 44, 0.5);
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-sans);
+    color: var(--color-text);
 }
 
 header {
@@ -22,9 +79,8 @@ header {
     justify-content: center;
     justify-items: center;
     padding: 15px;
-    background: rgb(255, 236, 249);
+    background: var(--color-bg);
     text-align: center;
-
 }
 
 main,
@@ -32,7 +88,7 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: rgb(255, 236, 249);
+    background: var(--color-bg);
     box-sizing: border-box;
 }
 
@@ -40,7 +96,7 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: rgb(255, 236, 249);
+    background: var(--color-bg);
     box-sizing: border-box;
 }
 
@@ -49,7 +105,8 @@ footer {
 }
 
 main {
-    border: 2px solid #38b2ac;
+    border: 2px solid var(--color-accent);
+    padding-top: 10px;
     flex: 1 0 auto;
 }
 
