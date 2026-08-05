@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <title>{{ $title ?? 'Document' }}</title>
+    <title>{{ $title ?? 'ЖИВА' }}</title>
 </head>
 
 <body class="min-h-full flex flex-col items-center m-0">
