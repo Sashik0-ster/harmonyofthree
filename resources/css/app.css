@@ -106,7 +106,6 @@ footer {
 
 main {
     border: 2px solid var(--color-accent);
-    padding-top: 10px;
     flex: 1 0 auto;
 }
 

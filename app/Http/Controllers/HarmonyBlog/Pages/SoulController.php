@@ -11,8 +11,11 @@ class SoulController extends Controller
     public function index(): View
     {
         $articles = Article::with(['section', 'author'])
-            ->latest()
-            ->paginate(5);
+            ->whereHas('section', function ($query) {
+                $query->where('slug', 'soul');
+            })
+            ->latest('published_at')
+            ->paginate(6);
 
         return view('pages.soul', compact('articles'));
     }

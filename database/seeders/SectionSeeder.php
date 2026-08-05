@@ -10,9 +10,9 @@ class SectionSeeder extends Seeder
     public function run(): void
     {
         $sections = [
-            ['name' => 'Новини', 'slug' => 'news', 'icon' => 'newspaper', 'sort_order' => 1],
-            ['name' => 'Технології', 'slug' => 'tech', 'icon' => 'cpu-chip', 'sort_order' => 2],
-            ['name' => 'Огляди', 'slug' => 'reviews', 'icon' => 'star', 'sort_order' => 3],
+            ['name' => 'Новини', 'slug' => 'soul', 'icon' => 'newspaper', 'sort_order' => 1],
+            ['name' => 'Технології', 'slug' => 'body', 'icon' => 'cpu-chip', 'sort_order' => 2],
+            ['name' => 'Огляди', 'slug' => 'mind', 'icon' => 'star', 'sort_order' => 3],
             ['name' => 'Аналітика', 'slug' => 'analytics', 'icon' => 'chart-bar', 'sort_order' => 4],
         ];
 
