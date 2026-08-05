@@ -2,16 +2,14 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\BlogPost;
 use Illuminate\Database\Seeder;
 
 class BlogPostSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
+        // Створюємо 50 зовнішніх статей для тестування
+        BlogPost::factory(10)->create();
     }
 }
