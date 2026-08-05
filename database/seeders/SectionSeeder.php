@@ -9,7 +9,6 @@ class SectionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Варіант 1: Створення конкретних базових розділів
         $sections = [
             ['name' => 'Новини', 'slug' => 'news', 'icon' => 'newspaper', 'sort_order' => 1],
             ['name' => 'Технології', 'slug' => 'tech', 'icon' => 'cpu-chip', 'sort_order' => 2],
@@ -19,8 +18,8 @@ class SectionSeeder extends Seeder
 
         foreach ($sections as $section) {
             Section::updateOrCreate(
-                ['slug' => $section['slug']],
-                [
+                ['slug' => $section['slug']], // Шукаємо за slug
+                [                             // Оновлюємо або створюємо з цими даними
                     'name' => $section['name'],
                     'icon' => $section['icon'],
                     'sort_order' => $section['sort_order'],
@@ -28,8 +27,5 @@ class SectionSeeder extends Seeder
                 ]
             );
         }
-
-        // Варіант 2: Додати ще 5 випадкових розділів через фабрику
-        Section::factory(5)->create();
     }
 }

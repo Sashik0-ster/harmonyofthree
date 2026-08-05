@@ -14,9 +14,6 @@ class ArticleSeeder extends Seeder
         $sections = Section::all();
         $users = User::all();
 
-        if ($sections->isEmpty()) {
-            $sections = Section::factory(3)->create();
-        }
 
         if ($users->isEmpty()) {
             $users = User::factory(5)->create();
