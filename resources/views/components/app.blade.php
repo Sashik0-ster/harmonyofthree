@@ -22,7 +22,7 @@
         <x-menu.sidebar-component />
     </nav>
 
-    <main>
+    <main class="mb-[36px]">
         {{ $slot }}
     </main>
 

@@ -22,6 +22,7 @@ class ArticleFactory extends Factory
             'content' => fake()->paragraphs(3, true),
             'section_id' => Section::inRandomOrder()->first()?->id ?? Section::factory(),
             'author_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
+            'published_at' => fake()->boolean(70) ? now()->subDays(fake()->numberBetween(1, 30)) : null,
         ];
     }
 }
