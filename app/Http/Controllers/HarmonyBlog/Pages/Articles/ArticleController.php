@@ -4,15 +4,17 @@ namespace App\Http\Controllers\HarmonyBlog\Pages\Articles;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-
-use Illuminate\Http\Request;
+use App\Models\Section; // Додайте імпорт моделі Section
 
 class ArticleController extends Controller
 {
-
-
-
-    public function show(Article $article)
+    /**
+     * Відображає сторінку статті.
+     *
+     * @param Section $section Автоматично прив'язується через {section:slug}
+     * @param Article $article Автоматично прив'язується через {article:slug}
+     */
+    public function show(Section $section, Article $article)
     {
         $relatedArticles = Article::published()
             ->where('section_id', $article->section_id)
@@ -21,7 +23,6 @@ class ArticleController extends Controller
             ->take(3)
             ->get();
 
-        return view('pages.articles.articles-show', compact('article', 'relatedArticles'));
+        return view('pages.articles.articles-show', compact('section', 'article', 'relatedArticles'));
     }
-
 }

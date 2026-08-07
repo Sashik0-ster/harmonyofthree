@@ -8,6 +8,8 @@ use App\Http\Controllers\HarmonyBlog\Pages\BodyController;
 use App\Http\Controllers\HarmonyBlog\Pages\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HarmonyBlog\Pages\Articles\ArticleController;
+use App\Http\Controllers\HarmonyBlog\Pages\Articles\BookmarkController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -23,4 +25,10 @@ Route::get('blog', [BlogController::class, 'index'])->name('blog');
 
 
 
-Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 'show'])
+    ->name('articles.show');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/articles/{article}/bookmark', [BookmarkController::class, 'toggle'])
+        ->name('articles.bookmark');
+});

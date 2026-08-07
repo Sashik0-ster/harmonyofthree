@@ -1,4 +1,4 @@
-<nav class="fixed top-0 left-0 w-full z-50 bg-surface border-t border-accent">
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-accent">
 
     <ul class="flex items-center justify-between w-full px-4 py-2">
         @foreach ($menuItems as $menuItem)
