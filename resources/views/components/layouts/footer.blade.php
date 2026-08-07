@@ -1,7 +1,7 @@
 <div>
 
 
-    <h1>HarmonyOfThree</h1>
+    <x-menu.bottom-navigation-component />
 
 
 </div>
