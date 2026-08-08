@@ -4,8 +4,7 @@
 
     <div class="relative">
         <a href="{{ route('articles.show', [$article->section, $article]) }}" class="block">
-            <img class="w-full h-64 md:h-80 object-cover"
-                src="{{ Storage::url($article->image) ?? asset('images/placeholder.jpg') }}" alt="{{ $article->title }}">
+            <img class="w-full h-64 md:h-80 object-cover" src="{{ $article->image_url }}" alt="{{ $article->title }}"">
             <div class="hover:bg-transparent transition duration-300 absolute inset-0 bg-black opacity-20"></div>
         </a>
 
@@ -24,36 +23,6 @@
             </span>
         @endif
 
-
-        <div
-            class="text-sm absolute top-0 right-0 bg-accent px-4 text-white rounded-full h-8 w-8 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-accent transition duration-500 ease-in-out">
-            @auth
-                <form action="{{ route('articles.bookmark', $article) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="flex items-center space-x-2 text-sm font-medium">
-                        @if (auth()->user()->bookmarkedArticles->contains($article->id))
-                            {{-- Активна іконка (збережено) --}}
-                            <svg class="w-6 h-6 text-accent fill-current" viewBox="0 0 24 24">
-                                <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                            </svg>
-                        @else
-                            {{-- Неактивна іконка --}}
-                            <svg class="w-6 h-6 text-text-muted fill-none stroke-current" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                            </svg>
-                        @endif
-                    </button>
-                </form>
-            @else
-                {{-- Для гостей: перенаправлення на сторінку входу --}}
-                <a href="#" class="flex items-center space-x-2 text-sm font-medium text-text-muted">
-                    <svg class="w-6 h-6 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                    </svg>
-                </a>
-            @endauth
-        </div>
 
     </div>
 

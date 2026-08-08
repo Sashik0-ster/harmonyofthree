@@ -35,4 +35,18 @@ return [
         ],
     ],
 
+    'telegram' => [
+        // Токен від @BotFather — тільки в .env, ніколи в коді/репозиторії.
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+
+        // Публічний HTTPS-URL, куди Telegram надсилатиме оновлення.
+        'webhook_url' => env('TELEGRAM_WEBHOOK_URL'),
+
+        // Довільний секретний рядок для перевірки заголовка вебхука.
+        'webhook_secret' => env('TELEGRAM_WEBHOOK_SECRET'),
+
+        // URL самого застосунку (Mini App), який відкриває кнопка меню.
+        'webapp_url' => env('TELEGRAM_WEBAPP_URL'),
+    ],
+
 ];
