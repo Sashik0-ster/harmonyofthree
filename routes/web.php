@@ -17,8 +17,7 @@ use App\Http\Controllers\Telegram\WebhookController;
 // });
 
 // Telegram Bot API надсилає сюди всі оновлення (повідомлення, команди тощо).
-Route::post('telegram/webhook', [WebhookController::class, 'handle'])
-    ->name('telegram.webhook');
+Route::post('/telegram/webhook', [WebhookController::class, 'handle']);
 
 
 
