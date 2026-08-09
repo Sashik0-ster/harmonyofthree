@@ -12,7 +12,8 @@
     <title>{{ $title ?? 'ЖИВА' }}</title>
 </head>
 
-<body class="min-h-full flex flex-col items-center m-0">
+<body class="min-h-full  flex flex-col items-center m-0">
+
 
     <header>
         <x-layouts.header />
@@ -22,13 +23,16 @@
         <x-menu.sidebar-component />
     </nav>
 
+
     <main class="mb-[36px]">
         {{ $slot }}
     </main>
 
+
     <footer>
         <x-layouts.footer />
     </footer>
+
 
 </body>
 

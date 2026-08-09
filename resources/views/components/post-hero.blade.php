@@ -1,64 +1,59 @@
 @props(['article'])
 
-<div class="rounded-lg overflow-hidden shadow-lg bg-surface flex flex-col justify-between">
+<div class="bg-bg">
 
-    <div>
-        {{-- Зображення з обгорткою-посиланням --}}
-        <div class="relative">
-            <img class="w-full h-64 md:h-80 object-cover"
-                src="{{ $article->image ? Storage::url($article->image) : asset('images/placeholder.jpg') }}"
-                alt="{{ $article->title }}">
-            <div class="absolute inset-0 bg-black opacity-20 hover:opacity-10 transition-opacity"></div>
+    {{-- Фото на весь екран з заголовком поверх --}}
+    <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-lg">
+        <img class="absolute inset-0 w-full h-full object-cover"
+            src="{{ $article->image ? Storage::url($article->image) : asset('images/placeholder.jpg') }}"
+            alt="{{ $article->title }}">
 
+        {{-- Затемнення знизу для читабельності заголовка --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20"></div>
 
-            @if ($article->is_featured)
-                <span class="absolute top-3 left-3 bg-body text-white text-xs px-2 py-1 rounded uppercase font-semibold">
-                    Рекомендовано
-                </span>
-            @endif
+        {{-- Кнопка "Назад" --}}
+        <button onclick="history.back()"
+            class="absolute top-5 left-5 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
 
+        {{-- Бейдж розділу --}}
+        @if ($article->section)
+            <span
+                class="absolute left-5 bottom-24 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded backdrop-blur-sm">
+                {{ $article->section->name }}
+            </span>
+        @endif
 
+        {{-- Заголовок поверх фото --}}
+        <h1 class="absolute left-5 right-5 bottom-8 text-white text-3xl font-extrabold leading-tight">
+            {{ $article->title }}
+        </h1>
+    </div>
 
-        </div>
-
-        {{-- Контентна частина --}}
-        <div class="px-6 py-4">
-            <h2 class="font-semibold text-2xl md:text-3xl text-text inline-block hover:text-accent transition-colors">
-                {{ $article->title }}
-            </h2>
-
-            @if ($article->excerpt)
-                <p class="text-text-muted text-sm mt-2">
-                    {{ $article->excerpt }}
+    {{-- Блок автора / дати / кнопки збереження --}}
+    <div class="flex items-center justify-between px-5 pt-5">
+        <div class="flex items-center gap-3">
+            <img src="{{ $article->author?->avatar ? Storage::url($article->author->avatar) : asset('images/avatar-placeholder.jpg') }}"
+                alt="{{ $article->author?->name ?? 'Анонім' }}" class="w-11 h-11 rounded-full object-cover">
+            <div>
+                <p class="font-semibold text-text text-sm">
+                    {{ $article->author?->name ?? 'Анонім' }}
                 </p>
-            @endif
+                <p class="text-text-muted text-xs mt-0.5">
+                    {{ $article->published_at?->translatedFormat('D, j M Y') ?? 'Чернетка' }}
+                </p>
+            </div>
         </div>
+
+        <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-accent text-white">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+        </button>
     </div>
 
-    {{-- Футер картки --}}
-    <div class="px-6 py-4 flex flex-row items-center justify-between border-t border-border">
-        <span class="py-1 text-sm text-text-muted mr-1 flex flex-row items-center" title="Автор">
-            <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            {{ $article->author?->name ?? 'Анонім' }}
-        </span>
-
-        <span class="py-1 text-sm text-text-muted mr-1 flex flex-row items-center" title="Дата публікації">
-            <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {{ $article->published_at?->diffForHumans() ?? 'Чернетка' }}
-        </span>
-
-        <span class="py-1 text-sm text-text-muted flex flex-row items-center" title="Перегляди">
-            <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            {{ $article->view_count ?? 0 }}
-        </span>
-    </div>
 </div>
