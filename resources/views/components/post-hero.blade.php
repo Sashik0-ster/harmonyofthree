@@ -22,8 +22,10 @@
         {{-- Бейдж розділу --}}
         @if ($article->section)
             <span
-                class="absolute left-5 bottom-24 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded backdrop-blur-sm">
+                class="absolute top-5 right-0 px-4 py-2 flex items-center justify-center  bg-accent text-white backdrop-blur-sm">
+
                 {{ $article->section->name }}
+
             </span>
         @endif
 
