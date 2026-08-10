@@ -15,33 +15,45 @@
     --color-mind: #B3BFFF;
     /* periwinkle — секція Mind */
 
-    /* Фонові / нейтральні */
-    --color-surface: #FFF9BF;
-    /* жовтий — фон картки */
-    --color-surface-light: #FFF58A;
-    /* світло-жовтий — hover/акцент фону */
-    --color-highlight: #FFBBE1;
-    /* світло-рожевий — другорядний акцент */
+    /* Фонові / нейтральні — темна тема */
+    --color-surface: #1e1828;
+    /* фон картки (був жовтий, тепер темний) */
+    --color-surface-light: #29213a;
+    /* hover/акцент фону */
+    --color-highlight: #322a44;
+    /* другорядний акцент / бордер */
     --color-peach: #FDDBBB;
-    /* персиковий — теплий нейтральний */
+    /* персиковий — лишаємо як теплий акцент, не фон */
 
-    /* Текст */
-    --color-text: #3d2e42;
-    --color-text-muted: #8a7d92;
+    /* База сторінки */
+    --color-bg: #14101c;
+    /* body/html фон */
+
+    /* Текст — інвертовано під темний фон */
+    --color-text: #f5f1fa;
+    --color-text-muted: #b8aecb;
 
     --color-nav: #B3BFFF;
     /* колір навігації */
 }
 
+html,
+body {
+    background-color: var(--color-bg);
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
 
-
+main {
+    flex: 1;
+}
 
 #logo {
     width: 50px;
     height: 50px;
-}
-
-#nav {
-    position: fixed;
 }
