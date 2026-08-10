@@ -3,8 +3,10 @@
 <a href="{{ $href }}"
     {{ $attributes->merge([
         'class' =>
-            'flex flex-col items-center gap-1 text-xs group transition-colors ' .
-            ($active ? 'text-accent font-semibold' : 'text-text-muted hover:text-accent-light dark:hover:text-accent'),
+            'flex items-center px-2 py-1 text-base group mt-1 rounded-lg transition-colors ' .
+            ($active
+                ? 'bg-accent text-white'
+                : 'text-text hover:bg-accent-light hover:text-accent-dark dark:text-text-muted dark:hover:bg-accent dark:hover:text-white'),
     ]) }}>
 
     <span class="flex items-center">{{ $slot }}</span>

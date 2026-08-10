@@ -1,10 +1,11 @@
 @props(['article'])
 
-<div class="rounded-lg overflow-hidden shadow-lg bg-surface">
+<div class="rounded-lg overflow-hidden shadow-lg bg-surface flex flex-col">
 
     <div class="relative">
         <a href="{{ route('articles.show', [$article->section, $article]) }}" class="block">
-            <img class="w-full h-64 md:h-80 object-cover" src="{{ $article->image_url }}" alt="{{ $article->title }}"">
+            <img class="w-full h-48 md:h-64 object-cover"
+                src="{{ $article->image ? Storage::url($article->image) : asset('images/placeholder.jpg') }}">
             <div class="hover:bg-transparent transition duration-300 absolute inset-0 bg-black opacity-20"></div>
         </a>
 
@@ -22,8 +23,6 @@
                 Рекомендовано
             </span>
         @endif
-
-
     </div>
 
     <div class="px-6 py-4">
@@ -36,7 +35,7 @@
         </p>
     </div>
 
-    <div class="px-6 py-4 flex flex-row items-center justify-between">
+    <div class="px-6 py-4 flex flex-row items-center justify-between mt-auto">
         <span class="py-1 text-sm text-text-muted mr-1 flex flex-row items-center">
             <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

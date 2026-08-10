@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="bg-bg">
+<div class="max-w-screen-xl p-5 sm:p-5 md:p-5">
 
     {{-- Фото на весь екран з заголовком поверх --}}
     <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-lg">
@@ -13,7 +13,7 @@
 
         {{-- Кнопка "Назад" --}}
         <button onclick="history.back()"
-            class="absolute top-5 left-5 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm">
+            class="absolute top-5 left-5 w-9 h-9 flex items-center justify-center rounded-full bg-accent text-white backdrop-blur-sm">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>

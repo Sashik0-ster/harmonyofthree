@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\HarmonyBlog\Pages;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Article;
+use Illuminate\Contracts\View\View;
 
 class MainController extends Controller
 {
@@ -11,13 +12,18 @@ class MainController extends Controller
     {
 
 
+        $articles = Article::with(['section', 'author'])
+            ->whereHas('section', function ($query) {
+                $query->where('slug', 'soul');
+            })
+            ->latest('published_at')
+            ->paginate(6);
 
 
 
 
 
-
-        return view('pages.main');
+        return view('pages.main', compact('articles'));
 
     }
 }

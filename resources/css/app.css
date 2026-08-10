@@ -5,106 +5,43 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Основна палітра */
+    --color-accent: #CB9DF0;
+    /* фіолетовий — головний акцентний */
+    --color-body: #DD7BDF;
+    /* магента — бейдж "Рекомендовано" */
+    --color-soul: #F0C1E1;
+    /* рожевий — секція Soul */
+    --color-mind: #B3BFFF;
+    /* periwinkle — секція Mind */
 
-    /* ===== Базові кольори (фон/текст) ===== */
-    --color-bg: #FFECF9;
-    /* основний рожевий фон (header/nav/main/footer) */
-    --color-bg-soft: #FCE8F0;
-    /* трохи темніший відтінок для карток/секцій */
-    --color-surface: #ffffff;
-    /* білі картки/поверхні */
-    --color-text: #2C2C2C;
-    /* основний текст */
-    --color-text-muted: #6B6B6B;
-    /* другорядний текст (мета, дати) */
-    --color-border: #E8B4CE;
-    /* межі, розділювачі у тон фону */
+    /* Фонові / нейтральні */
+    --color-surface: #FFF9BF;
+    /* жовтий — фон картки */
+    --color-surface-light: #FFF58A;
+    /* світло-жовтий — hover/акцент фону */
+    --color-highlight: #FFBBE1;
+    /* світло-рожевий — другорядний акцент */
+    --color-peach: #FDDBBB;
+    /* персиковий — теплий нейтральний */
 
-    /* ===== Акцентний колір ===== */
-    --color-accent: #B23A6B;
-    /* малиново-рожевий — основний CTA/лінк */
-    --color-accent-light: #E8A0C0;
-    --color-accent-dark: #7A2549;
+    /* Текст */
+    --color-text: #3d2e42;
+    --color-text-muted: #8a7d92;
 
-    /* ===== Soul (синій) ===== */
-    --color-soul: #2E7DA6;
-    --color-soul-dark: #123C52;
-    --color-soul-light: #6FB7DB;
-
-    /* ===== Body (золотий) ===== */
-    --color-body: #E8B923;
-    --color-body-dark: #B8850F;
-    --color-body-light: #F7DA7A;
-
-    /* ===== Mind (зелений) ===== */
-    --color-mind: #4C9C64;
-    --color-mind-dark: #255C3C;
-    --color-mind-light: #8FD09E;
-
-    /* ===== Стани ===== */
-    --color-success: #4C9C64;
-    --color-warning: #E8B923;
-    --color-danger: #C0392B;
+    --color-nav: #B3BFFF;
+    /* колір навігації */
 }
 
-:root {
-    /* ===== Тінь / оверлей (немає нативного Tailwind-еквіваленту) ===== */
-    --color-shadow: rgba(0, 0, 0, 0.08);
-    --color-overlay: rgba(44, 44, 44, 0.5);
-}
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-sans);
-    color: var(--color-text);
-}
 
-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    padding: 15px;
-    background: var(--color-bg);
-    text-align: center;
-}
 
-main,
-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: var(--color-bg);
-    box-sizing: border-box;
-}
-
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: var(--color-bg);
-    box-sizing: border-box;
-}
-
-footer {
-    flex-shrink: 0;
-}
-
-main {
-    flex: 1 0 auto;
-}
 
 #logo {
     width: 50px;
-    height: 70px;
+    height: 50px;
 }
 
-#app_name {
-    text-align: left;
-    align-content: center;
-    padding: 5px;
+#nav {
+    position: fixed;
 }

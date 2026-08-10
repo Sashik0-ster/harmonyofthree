@@ -12,28 +12,31 @@
     <title>{{ $title ?? 'ЖИВА' }}</title>
 </head>
 
-<body class="min-h-full  flex flex-col items-center m-0">
+<body>
+    <div class="min-h-screen">
 
+        <!-- Верхній блок: sidebar-menu + header разом, обидва fixed -->
+        <div class="fixed top-0 left-0 right-0 z-50 bg-nav shadow-sm">
+            <div class="flex justify-between rounded-b-xl">
+                <x-menu.sidebar-component />
+            </div>
+        </div>
 
-    <header>
-        <x-layouts.header />
-    </header>
+        <div class="flex justify-center">
+            <x-layouts.header />
+        </div>
 
-    <nav>
-        <x-menu.sidebar-component />
-    </nav>
+        <!-- Контент -->
+        <main class="sm:px-2 md:px-2 max-w-screen-xl">
+            {{ $slot }}
+        </main>
 
+        <!-- Нижнє меню -->
+        <div class="fixed bottom-0 left-0 right-0 z-50 flex justify-between rounded-t-xl bg-nav shadow-sm">
+            <x-menu.bottom-navigation-component />
+        </div>
 
-    <main class="mb-[36px]">
-        {{ $slot }}
-    </main>
-
-
-    <footer>
-        <x-layouts.footer />
-    </footer>
-
-
+    </div>
 </body>
 
 </html>
