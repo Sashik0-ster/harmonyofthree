@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="max-w-screen-xl p-5 sm:p-5 md:p-5">
+<div class="max-w-screen-xl p-5 sm:p-1 md:p-1">
 
     {{-- Фото на весь екран з заголовком поверх --}}
     <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-lg">
