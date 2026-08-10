@@ -8,50 +8,44 @@
     /* Основна палітра */
     --color-accent: #CB9DF0;
     /* фіолетовий — головний акцентний */
-    --color-body: #DD7BDF;
+    --color-body: #FAF5FF;
     /* магента — бейдж "Рекомендовано" */
     --color-soul: #F0C1E1;
     /* рожевий — секція Soul */
     --color-mind: #B3BFFF;
     /* periwinkle — секція Mind */
 
-    /* Фонові / нейтральні — темна тема */
-    --color-surface: #1e1828;
-    /* фон картки (був жовтий, тепер темний) */
-    --color-surface-light: #29213a;
-    /* hover/акцент фону */
-    --color-highlight: #322a44;
-    /* другорядний акцент / бордер */
+    /* Фонові / нейтральні */
+    --color-surface: #FFF9BF;
+    /* жовтий — фон картки */
+    --color-surface-light: #FFF58A;
+    /* світло-жовтий — hover/акцент фону */
+    --color-highlight: #FFBBE1;
+    /* світло-рожевий — другорядний акцент */
     --color-peach: #FDDBBB;
-    /* персиковий — лишаємо як теплий акцент, не фон */
+    /* персиковий — теплий нейтральний */
 
-    /* База сторінки */
-    --color-bg: #14101c;
-    /* body/html фон */
-
-    /* Текст — інвертовано під темний фон */
-    --color-text: #f5f1fa;
-    --color-text-muted: #b8aecb;
+    /* Текст */
+    --color-text: #3d2e42;
+    --color-text-muted: #8a7d92;
 
     --color-nav: #B3BFFF;
     /* колір навігації */
 }
 
-html,
 body {
-    background-color: var(--color-bg);
-}
-
-body {
+    background: var(--color-body);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
 }
 
+
 main {
     flex: 1;
 }
+
 
 #logo {
     width: 50px;
