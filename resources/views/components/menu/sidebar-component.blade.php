@@ -12,7 +12,7 @@
         <li class="flex">
             <x-menu.sidebar-item :href="$url" :active="$isActive" class="inline-flex items-center">
                 @if (!empty($menuItem['icon']))
-                    <img src="{{ asset('img/menuicons/' . $menuItem['icon']) }}" class="w-5 h-5 shrink-0 mr-1"
+                    <img src="{{ asset('img/menuicons/' . $menuItem['icon']) }}" class="w-4 h-4 shrink-0 mr-1"
                         alt="{{ $menuItem['title'] }}">
                 @endif
                 <span class="flex items-start">{{ $menuItem['title'] }}</span>
