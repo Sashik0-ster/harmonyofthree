@@ -14,10 +14,10 @@ trait BottomNavigationData
         }
 
         return $this->navigationItems = [
-            ['title' => 'Home', 'route' => '#', 'icon' => 'home_icon.svg'],
-            ['title' => 'Search', 'route' => '#', 'icon' => 'search_icon.svg'],
-            ['title' => 'Saved', 'route' => '#', 'icon' => 'bookmark_icon.svg'],
-            ['title' => 'Profile', 'route' => '#', 'icon' => 'user_icon.svg'],
+            ['title' => 'Про нас', 'route' => '#', 'icon' => 'home_icon.svg'],
+            ['title' => 'Пошук', 'route' => '#', 'icon' => 'search_icon.svg'],
+            ['title' => 'Збережене', 'route' => '#', 'icon' => 'bookmark_icon.svg'],
+            ['title' => 'Профіль', 'route' => '#', 'icon' => 'user_icon.svg'],
         ];
     }
 }
