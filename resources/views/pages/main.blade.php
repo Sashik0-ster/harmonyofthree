@@ -7,7 +7,7 @@
             </span>
         </div>
 
-        <x-ui.carousel>
+        <x-ui.carousel.carousel>
             @foreach ($articles as $article)
                 <x-ui.carousel.item :active="$loop->first" :title="$article->title">
                     <x-article-card :article="$article" />
@@ -19,7 +19,7 @@
                     <x-ui.carousel.indicator :index="$index" :active="$index === 0" />
                 @endforeach
             </x-slot:indicators>
-        </x-ui.carousel>
+        </x-ui.carousel.carousel>
     </div>
 
     <div class="mt-10 md:mb-10 sm:mb 10">
