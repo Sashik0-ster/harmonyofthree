@@ -2,7 +2,7 @@
 
 <div id="{{ $id }}" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="relative h-48 sm:h-64 md:h-96 overflow-hidden rounded-2xl bg-surface border border-highlight">
+    <div class="relative h-48 sm:h-64 md:h-96 rounded-2xl bg-surface">
         {{ $slot }}
     </div>
 

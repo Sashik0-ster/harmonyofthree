@@ -27,7 +27,9 @@
         </div>
 
         <main class="flex-1 w-full mx-auto max-w-screen-xl px-1 sm:px-2 md:px-2 pb-10">
-            {{ $slot }}
+            <div class="max-w-screen-xl mx-auto p-5 sm:p-5 md:p-5">
+                {{ $slot }}
+            </div>
         </main>
 
 

@@ -1,4 +1,4 @@
-<div class="flex items-center mt-[54px] pt-5">
+<div class="flex items-center mt-[54px] pt-2">
     <div id="logo">
         <img src="/img/logoS.png" alt="">
     </div>
