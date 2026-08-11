@@ -22,7 +22,7 @@
         </x-ui.carousel>
     </div>
 
-    <div class="mb-10 md:mb-10 sm:mb 10">
+    <div class="mt-10 md:mb-10 sm:mb 10">
         <div class="bg-accent py-1 px-2 mb-2 text-white rounded-sm">
             <span class="text-white text-sm font-bold">
                 Популярні статті
