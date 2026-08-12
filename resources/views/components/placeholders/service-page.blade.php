@@ -1,8 +1,8 @@
-<div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+<div class="max-w-screen-xl mx-auto p-2 sm:p-2 md:p-2">
     <div
         class="flex flex-col items-center justify-center p-8 my-6 bg-gray-50 border border-gray-200 rounded-2xl text-center shadow-sm">
-        <div class="w-16 h-16 mb-4 flex items-center justify-center bg-blue-50 text-blue-600 rounded-full text-2xl">
-            🛠️
+        <div class="flex items-center justify-center bg-blue-50 text-blue-600 rounded-full text-2xl">
+            <img src="/img/services/services.png" alt="" class="rounded-xl">
         </div>
 
         <h2 class="text-xl font-semibold text-gray-800 mb-2">

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\HarmonyBlog;
+namespace App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -14,7 +13,7 @@ class IndexController extends Controller
     {
 
 
-        return view('/index');
+        return view('/pages.bottomNavigationPages.index');
 
     }
 

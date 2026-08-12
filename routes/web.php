@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\HarmonyBlog\IndexController;
+use App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages\IndexController;
+use App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages\SearchController;
+use App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages\BookmarkController;
+use App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages\ProfileSettingController;
 use App\Http\Controllers\HarmonyBlog\Pages\MindController;
 use App\Http\Controllers\HarmonyBlog\Pages\MainController;
 use App\Http\Controllers\HarmonyBlog\Pages\SoulController;
@@ -8,9 +11,8 @@ use App\Http\Controllers\HarmonyBlog\Pages\BodyController;
 use App\Http\Controllers\HarmonyBlog\Pages\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HarmonyBlog\Pages\Articles\ArticleController;
-use App\Http\Controllers\HarmonyBlog\Pages\Articles\BookmarkController;
 use App\Http\Controllers\Telegram\WebhookController;
-
+use Laravel\Pao\Drivers\Concerns\ProfileCollector;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,8 +23,14 @@ Route::post('telegram/webhook', [WebhookController::class, 'handle'])
     ->name('telegram.webhook');
 
 
+// BottomNavigationPages routing
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('search', [SearchController::class, 'index'])->name('search');
+Route::get('bookmark', [BookmarkController::class, 'index'])->name('bookmark');
+Route::get('profilesetting', [ProfileSettingController::class, 'index'])->name('profilesetting');
+
+// Pages routing
 Route::get('main', [MainController::class, 'index'])->name('main');
 Route::get('soul', [SoulController::class, 'index'])->name('soul');
 Route::get('body', [BodyController::class, 'index'])->name('body');
