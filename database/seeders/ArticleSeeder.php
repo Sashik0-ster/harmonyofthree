@@ -13,8 +13,8 @@ class ArticleSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Очищаємо папку в S3 перед початком
-        Storage::disk('s3')->deleteDirectory('articles');
+        // 1. Очищаємо папку на дефолтному диску перед початком
+        Storage::deleteDirectory('articles');
 
         // 2. Готуємо залежності
         $sections = Section::all();
@@ -27,21 +27,29 @@ class ArticleSeeder extends Seeder
             $users = User::factory(5)->create();
         }
 
-        // 3. Генеруємо статті та завантажуємо зображення в S3
-        Article::factory(30)->make()->each(function ($article) use ($sections, $users) {
+        // 3. Генеруємо статті та завантажуємо зображення
+        Article::factory(30)->make()->each(function (Article $article) use ($sections, $users) {
             $article->section_id = $sections->random()->id;
             $article->author_id = fake()->boolean(80) ? $users->random()->id : null;
 
-            // Завантажуємо рандомне фото з Picsum
-            $imageContent = Http::get('https://picsum.photos/640/480')->body();
             $imagePath = 'articles/' . uniqid() . '.jpg';
 
-            // Зберігаємо безпосередньо в S3
-            Storage::disk('s3')->put($imagePath, $imageContent);
+            try {
+                $response = Http::timeout(10)->get('https://picsum.photos/640/480');
 
-            // У БД зберігаємо тільки відносний шлях: "articles/65f123abc456.jpg"
-            $article->image = $imagePath;
+                if ($response->successful()) {
+                    Storage::put($imagePath, $response->body());
+                    $article->image = $imagePath;
+                } else {
+                    $this->command->warn("Не вдалося завантажити зображення для статті: {$article->title}");
+                }
+            } catch (\Throwable $e) {
+                $this->command->warn("Помилка завантаження зображення: {$e->getMessage()}");
+            }
+
             $article->save();
         });
+
+        $this->command->info('Створено 30 статей.');
     }
 }

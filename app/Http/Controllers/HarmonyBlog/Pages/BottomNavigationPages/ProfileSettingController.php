@@ -11,7 +11,7 @@ class ProfileSettingController extends Controller
     {
 
 
-        return view('/pages.bottomNavigationPages.profilesetting');
+        return view('pages.bottomNavigationPages.profilesetting');
 
     }
 }

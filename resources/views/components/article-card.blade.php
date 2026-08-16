@@ -4,8 +4,8 @@
 
     <div class="relative">
         <a href="{{ route('articles.show', [$article->section, $article]) }}" class="block">
-            <img class="w-full h-48 md:h-64 object-cover"
-                src="{{ $article->image ? Storage::url($article->image) : asset('images/placeholder.jpg') }}">
+            <img class="w-full h-48 md:h-64 object-cover" src="{{ $article->image_url }}" alt="{{ $article->title }}"
+                loading="lazy">
             <div class="hover:bg-transparent transition duration-300 absolute inset-0 bg-black opacity-20"></div>
         </a>
 
@@ -19,7 +19,7 @@
         @endif
 
         @if ($article->is_featured)
-            <span class="absolute top-3 left-3 bg-body text-white text-xs px-2 py-1 rounded uppercase font-semibold">
+            <span class="absolute top-3 left-3 bg-accent text-white text-xs px-2 py-1 rounded uppercase font-semibold">
                 Рекомендовано
             </span>
         @endif

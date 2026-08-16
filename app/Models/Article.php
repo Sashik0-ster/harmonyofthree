@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Article extends Model
 {
@@ -82,19 +84,12 @@ class Article extends Model
         return $query->where('is_featured', true);
     }
 
-    /**
-     * Динамічний атрибут для отримання URL зображення з S3.
-     */
-    // public function getImageUrlAttribute(): ?string
-    // {
-    //     if (!$this->image) {
-    //         return null;
-    //     }
-
-    //     // Генеруємо посилання, яке буде дійсне 1 годину
-    //     return Storage::disk('s3')->temporaryUrl(
-    //         $this->image,
-    //         now()->addHour()
-    //     );
-    // }
+    protected function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->image
+            ? Storage::url($this->image)
+            : asset('img/placeholder.jpg'),
+        );
+    }
 }
