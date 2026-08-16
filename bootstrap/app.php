@@ -15,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',
         ]);
+        $middleware->web(append: [
+            \App\Http\Middleware\ConsumeTelegramLoginToken::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
