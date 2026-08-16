@@ -4,13 +4,7 @@
 
             <h2 class="text-3xl font-bold text-text mb-8">Профіль</h2>
 
-            @if (session('status'))
-                <div class="mb-6 rounded-lg bg-accent/20 text-text px-4 py-3">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <form method="POST" action="#" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('profilesetting') }}" enctype="multipart/form-data"
                 class="flex flex-col gap-6 bg-surface rounded-2xl p-6 border-1 border-accent">
                 @csrf
                 @method('PATCH')
@@ -33,7 +27,7 @@
                 {{-- Ім'я --}}
                 <div class="flex flex-col gap-1">
                     <label for="name" class="text-sm font-medium text-text">Ім'я</label>
-                    <input type="text" id="name" name="name" value="1"
+                    <input type="text" id="name" name="name" value="{{ old($user->name) }}"
                         class="rounded-lg border-1 border-accent bg-body px-4 py-2 text-text">
                     @error('name')
                         <span class="text-sm text-red-600">{{ $message }}</span>
@@ -43,7 +37,7 @@
                 {{-- Email --}}
                 <div class="flex flex-col gap-1">
                     <label for="email" class="text-sm font-medium text-text">Email</label>
-                    <input type="email" id="email" name="email" value="1"
+                    <input type="email" id="email" name="email" value="{{ old($user->name) }}"
                         class="rounded-lg border-1 border-accent bg-body px-4 py-2 text-text">
                     @error('email')
                         <span class="text-sm text-red-600">{{ $message }}</span>
