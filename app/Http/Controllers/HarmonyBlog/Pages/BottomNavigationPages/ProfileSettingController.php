@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\User;
 use App\Repositories\Contracts\ProfileRepositoryInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileSettingController extends Controller
 {
@@ -14,10 +19,57 @@ class ProfileSettingController extends Controller
     ) {
     }
 
-    public function index(Request $request): View
+    /**
+     * Головна сторінка налаштувань профілю (GET /profilesetting)
+     */
+    public function index(): View|RedirectResponse
     {
-        $user = $this->profiles->find($request->user()->id);
+        $userId = Auth::id();
+
+        if (!$userId) {
+            return redirect()->route('register');
+        }
+
+        $user = $this->profiles->find($userId);
 
         return view('pages.bottomNavigationPages.profilesetting', ['user' => $user]);
+    }
+
+    /**
+     * Відображення форми реєстрації (GET /register)
+     */
+    public function create(): View
+    {
+        return view('pages.auth.register');
+    }
+
+    /**
+     * Обробка форми реєстрації (POST /register)
+     */
+    public function registerUser(RegisterRequest $request): RedirectResponse
+    {
+        // Отримуємо очищені та перевірені дані з RegisterRequest
+        $data = $request->validated();
+
+        $user = User::create([
+            'name' => $data['name'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        // Автоматично логінимо новоствореного користувача
+        Auth::login($user);
+
+        return redirect()->route('index');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        // Скидаємо сесію та оновлюємо CSRF-токен для безпеки
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('index');
     }
 }

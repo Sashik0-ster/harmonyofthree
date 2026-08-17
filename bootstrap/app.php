@@ -18,6 +18,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\ConsumeTelegramLoginToken::class,
         ]);
+        $middleware->redirectTo(
+            guests: '/register', // Куди йти, якщо користувач не залогінений
+            users: '/register.store' // Куди йти після авторизації
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
