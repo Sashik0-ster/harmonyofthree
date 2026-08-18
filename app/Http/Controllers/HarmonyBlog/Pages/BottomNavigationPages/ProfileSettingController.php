@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use App\Repositories\Contracts\ProfileRepositoryInterface;
@@ -38,9 +39,14 @@ class ProfileSettingController extends Controller
     /**
      * Відображення форми реєстрації (GET /register)
      */
-    public function create(): View
+    public function register(): View
     {
         return view('pages.auth.register');
+    }
+
+    public function login(): View
+    {
+        return view('pages.auth.login');
     }
 
     /**
@@ -59,7 +65,25 @@ class ProfileSettingController extends Controller
         // Автоматично логінимо новоствореного користувача
         Auth::login($user);
 
-        return redirect()->route('index');
+        return redirect()
+            ->route('index');
+    }
+
+    public function loginUser(LoginRequest $request): RedirectResponse
+    {
+        $credentials = $request->only('name', 'password');
+
+        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
+            return back()
+                ->withErrors(['name' => 'Невірний name або пароль'])
+                ->onlyInput('name');
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()
+            ->route('index')
+            ->with('status', 'Вхід виконано успішно');
     }
 
     public function logout(Request $request): RedirectResponse

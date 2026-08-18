@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:20'],
-            'password' => ['required', 'string', Password::defaults()],
+            'password' => ['required', 'string', 'confirmed', Password::defaults()],
         ];
     }
 
@@ -38,6 +38,13 @@ class RegisterRequest extends FormRequest
             'name.max' => 'Ім\'я не повинно перевищувати :max символів.',
 
             'password.required' => 'Введіть пароль.',
+            'password.confirmed' => 'Паролі не співпадають.',
+            'password.min' => 'Пароль має містити щонайменше :min символів.',
+            'password.letters' => 'Пароль має містити хоча б одну літеру.',
+            'password.mixed' => 'Пароль має містити великі та малі літери.',
+            'password.numbers' => 'Пароль має містити хоча б одну цифру.',
+            'password.symbols' => 'Пароль має містити хоча б один спецсимвол.',
+            'password.uncompromised' => 'Цей пароль зустрічався в витоках даних, оберіть інший.',
         ];
     }
 }

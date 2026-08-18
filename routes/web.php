@@ -31,8 +31,10 @@ Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 
     ->name('articles.show');
 
 // Сторінки авторизації / реєстрації
-Route::get('register', [ProfileSettingController::class, 'create'])->name('register');
-Route::post('register', [ProfileSettingController::class, 'registerUser'])->name('register.store'); // 👈 Обробка реєстрації
+Route::get('register', [ProfileSettingController::class, 'register'])->name('register');
+Route::post('register', [ProfileSettingController::class, 'registerUser'])->name('register.store');
+Route::get('login', [ProfileSettingController::class, 'login'])->name('login');
+Route::post('login', [ProfileSettingController::class, 'loginUser'])->name('login.store');
 
 // Захищені сторінки (потребують авторизації користувача)
 Route::middleware('auth')->group(function () {
