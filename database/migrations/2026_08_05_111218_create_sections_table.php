@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('slug')->unique();
             $table->string('name');
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->unsignedBigInteger('sort_order')->default(0);
             $table->boolean('is_active')->default(1);
             $table->timestamps();

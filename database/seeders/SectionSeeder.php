@@ -10,10 +10,10 @@ class SectionSeeder extends Seeder
     public function run(): void
     {
         $sections = [
-            ['name' => 'Новини', 'slug' => 'soul', 'icon' => 'newspaper', 'sort_order' => 1],
-            ['name' => 'Технології', 'slug' => 'body', 'icon' => 'cpu-chip', 'sort_order' => 2],
-            ['name' => 'Огляди', 'slug' => 'mind', 'icon' => 'star', 'sort_order' => 3],
-            ['name' => 'Аналітика', 'slug' => 'analytics', 'icon' => 'chart-bar', 'sort_order' => 4],
+            ['name' => 'Душа', 'slug' => 'soul', 'icon' => 'newspaper', 'sort_order' => 1],
+            ['name' => 'Тіло', 'slug' => 'body', 'icon' => 'cpu-chip', 'sort_order' => 2],
+            ['name' => 'Розум', 'slug' => 'mind', 'icon' => 'star', 'sort_order' => 3],
+            ['name' => 'Іньше', 'slug' => 'analytics', 'icon' => 'chart-bar', 'sort_order' => 4],
         ];
 
         foreach ($sections as $section) {

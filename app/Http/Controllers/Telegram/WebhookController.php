@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Telegram;
 
 use App\Http\Controllers\Controller;
-use App\Models\LoginToken;
 use App\Models\User;
 use App\Services\Telegram\TelegramBotService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 class WebhookController extends Controller
 {
     public function __construct(protected TelegramBotService $bot)
     {
-        //
     }
 
     public function handle(Request $request): Response
@@ -23,7 +20,6 @@ class WebhookController extends Controller
         $this->verifySecret($request);
 
         $update = $request->all();
-
         Log::info('Telegram update', $update);
 
         $message = $update['message'] ?? null;
@@ -58,27 +54,9 @@ class WebhookController extends Controller
 
     protected function handleStart(int $chatId, array $from): void
     {
-        $user = User::firstOrCreate(
-            ['telegram_id' => $from['id']],
-            [
-                'name' => trim(($from['first_name'] ?? '') . ' ' . ($from['last_name'] ?? '')) ?: 'Користувач',
-                'telegram_username' => $from['username'] ?? null,
-            ]
-        );
-
-        // Оновлюємо username, якщо змінився
-        if (($from['username'] ?? null) !== $user->telegram_username) {
-            $user->update(['telegram_username' => $from['username'] ?? null]);
-        }
-
-        // Одноразовий короткоживучий токен для входу
-        $loginToken = LoginToken::create([
-            'user_id' => $user->id,
-            'token' => Str::random(48),
-            'expires_at' => now()->addMinutes(5),
-        ]);
-
-        $webAppUrl = config('services.telegram.webapp_url') . '?login_token=' . $loginToken->token;
+        // Реєстрація/оновлення відбудеться повторно при відкритті WebApp через initData —
+        // тут достатньо просто привітати користувача, без запису в БД.
+        $webAppUrl = config('services.telegram.webapp_url');
 
         $this->bot->sendWebAppButton(
             chatId: $chatId,

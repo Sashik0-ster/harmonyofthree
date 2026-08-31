@@ -60,6 +60,7 @@ class ProfileSettingController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'password' => Hash::make($data['password']),
+
         ]);
 
         // Автоматично логінимо новоствореного користувача

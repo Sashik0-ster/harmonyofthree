@@ -11,6 +11,7 @@ use App\Http\Controllers\HarmonyBlog\Pages\MainController;
 use App\Http\Controllers\HarmonyBlog\Pages\MindController;
 use App\Http\Controllers\HarmonyBlog\Pages\SoulController;
 use App\Http\Controllers\Telegram\WebhookController;
+use App\Http\Controllers\Telegram\TelegramAuthController;
 use Illuminate\Support\Facades\Route;
 
 // Telegram Webhook
@@ -46,3 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('bookmark', [BookmarkController::class, 'index'])->name('bookmark');
     Route::post('articles/{article}/bookmark', [BookmarkController::class, 'toggle'])->name('articles.bookmark');
 });
+
+
+Route::post('/telegram/auth', [TelegramAuthController::class, 'login'])
+    ->name('telegram.login-via-initdata');

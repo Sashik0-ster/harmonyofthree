@@ -87,9 +87,19 @@ class Article extends Model
     protected function imageUrl(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->image
-            ? Storage::url($this->image)
-            : asset('img/placeholder.jpg'),
+            get: function () {
+                if ($this->image) {
+                    // Якщо в БД шлях починається з "uploads/", прибираємо або обробляємо
+                    if (str_starts_with($this->image, 'uploads/')) {
+                        return asset($this->image);
+                    }
+
+                    // Для файлів з storage/app/public/articles/...
+                    return Storage::disk('public')->url($this->image);
+                }
+
+                return asset('img/services/services.png');
+            }
         );
     }
 }

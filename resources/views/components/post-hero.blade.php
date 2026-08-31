@@ -1,11 +1,10 @@
 @props(['article'])
 
-<div class="max-w-screen-xl p-5 sm:p-1 md:p-1">
+<div class="max-w-screen-xl">
 
     {{-- Фото на весь екран з заголовком поверх --}}
     <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-lg">
-        <img class="absolute inset-0 w-full h-full object-cover"
-            src="{{ $article->image ? Storage::url($article->image) : asset('images/placeholder.jpg') }}"
+        <img class="absolute inset-0 w-full h-full object-cover" src="{{ $article->image_url }}"
             alt="{{ $article->title }}">
 
         {{-- Затемнення знизу для читабельності заголовка --}}
@@ -36,14 +35,9 @@
     </div>
 
     {{-- Блок автора / дати / кнопки збереження --}}
-    <div class="flex items-center justify-between px-5 pt-5">
+    <div class="flex items-center justify-between px-2 pt-2">
         <div class="flex items-center gap-3">
-            <img src="{{ $article->author?->avatar ? Storage::url($article->author->avatar) : asset('images/avatar-placeholder.jpg') }}"
-                alt="{{ $article->author?->name ?? 'Анонім' }}" class="w-11 h-11 rounded-full object-cover">
             <div>
-                <p class="font-semibold text-text text-sm">
-                    {{ $article->author?->name ?? 'Анонім' }}
-                </p>
                 <p class="text-text-muted text-xs mt-0.5">
                     {{ $article->published_at?->translatedFormat('D, j M Y') ?? 'Чернетка' }}
                 </p>

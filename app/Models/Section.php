@@ -15,9 +15,8 @@ class Section extends Model
      * Поля, дозволені для масового заповнення.
      */
     protected $fillable = [
-        'title',
+        'name',
         'slug',
-        'description',
         'sort_order',
         'is_active',
     ];

@@ -30,12 +30,17 @@
                 {{-- Пароль --}}
                 <div class="flex flex-col gap-1">
                     <label for="password" class="text-sm font-medium text-text">Пароль</label>
-                    <input type="password" id="password" name="password"
+                    <input type="password" id="password" name="password" placeholder="Введіть пароль"
                         class="rounded-lg border-1 border-accent bg-body px-4 py-2 text-text" required>
                     @error('password')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
-                    <input type="password" name="password_confirmation" placeholder="Підтвердіть пароль">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label for="password_confirmation" class="text-sm font-medium text-text">Підтвердіть пароль</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation"
+                        placeholder="Підтвердіть пароль"
+                        class="rounded-lg border-1 border-accent bg-body px-4 py-2 text-text" required>
                 </div>
 
                 <button type="submit"
