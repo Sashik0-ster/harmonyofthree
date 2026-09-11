@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -84,18 +85,23 @@ class Article extends Model
         return $query->where('is_featured', true);
     }
 
+ public function views(): HasMany
+{
+    return $this->hasMany(ArticleView::class);
+}
+
     protected function imageUrl(): Attribute
     {
         return Attribute::make(
             get: function () {
                 if ($this->image) {
                     // Якщо в БД шлях починається з "uploads/", прибираємо або обробляємо
-                    if (str_starts_with($this->image, 'uploads/')) {
+                    if (str_starts_with($this->image, 'uploads')) {
                         return asset($this->image);
                     }
 
                     // Для файлів з storage/app/public/articles/...
-                    return Storage::disk('public')->url($this->image);
+                    return Storage::disk('public_uploads')->url($this->image);
                 }
 
                 return asset('img/services/services.png');

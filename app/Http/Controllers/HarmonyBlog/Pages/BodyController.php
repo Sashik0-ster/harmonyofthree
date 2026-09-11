@@ -11,6 +11,7 @@ class BodyController extends Controller
     public function index(): View
     {
         $articles = Article::with(['section', 'author'])
+            ->withCount('views')
             ->whereHas('section', function ($query) {
                 $query->where('slug', 'body');
             })
@@ -18,6 +19,5 @@ class BodyController extends Controller
             ->paginate(6);
 
         return view('pages.body', compact('articles'));
-
     }
 }

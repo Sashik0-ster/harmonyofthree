@@ -47,7 +47,7 @@ class ArticleForm
                     ->label('Зображення')
                     ->image()
                     ->imageEditor()
-                    ->disk('public')
+                    ->disk('public_uploads')
                     ->directory('articles')
                     ->visibility('public'),
                 Select::make('status')

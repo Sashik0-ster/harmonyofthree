@@ -51,3 +51,8 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/telegram/auth', [TelegramAuthController::class, 'login'])
     ->name('telegram.login-via-initdata');
+
+
+    Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 'show'])
+    ->middleware('throttle:60,1')
+    ->name('articles.show');

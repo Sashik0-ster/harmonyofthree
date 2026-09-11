@@ -12,6 +12,7 @@ class MindController extends Controller
     public function index(): View
     {
         $articles = Article::with(['section', 'author'])
+            ->withCount('views')
             ->whereHas('section', function ($query) {
                 $query->where('slug', 'mind');
             })

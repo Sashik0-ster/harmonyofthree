@@ -14,7 +14,7 @@ class MainController extends Controller
 
         $articles = Article::with(['section', 'author'])
             ->whereHas('section', function ($query) {
-                $query->where('slug', 'soul');
+                $query->where('slug', 'main');
             })
             ->latest('published_at')
             ->paginate(6);

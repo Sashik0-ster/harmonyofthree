@@ -41,6 +41,11 @@ class Section extends Model
         return $this->hasMany(Article::class);
     }
 
+public function publishedArticles(): HasMany
+{
+    return $this->hasMany(Article::class)->where('status', 'published');
+}
+
     /* -------------------------------------------------------------------------- */
     /*                                Scope-методи                                */
     /* -------------------------------------------------------------------------- */
