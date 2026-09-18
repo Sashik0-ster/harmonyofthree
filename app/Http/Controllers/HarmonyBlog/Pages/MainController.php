@@ -3,27 +3,22 @@
 namespace App\Http\Controllers\HarmonyBlog\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Repositories\Articles\ArticleSortRepository;
 use Illuminate\Contracts\View\View;
 
 class MainController extends Controller
 {
-    public function index()
+    /**
+     * Відображення головної сторінки з останніми та популярними статтями.
+     */
+    public function index(ArticleSortRepository $repository): View
     {
+        // 5 останніх опублікованих статей
+        $articles = $repository->getSortedByDate(direction: 'desc', perPage: 5);
 
+        // 6 найпопулярніших статей за переглядами
+        $popularArticles = $repository->getSortedByViews(perPage: 6);
 
-        $articles = Article::with(['section', 'author'])
-            ->whereHas('section', function ($query) {
-                $query->where('slug', 'main');
-            })
-            ->latest('published_at')
-            ->paginate(6);
-
-
-
-
-
-        return view('pages.main', compact('articles'));
-
+        return view('pages.main', compact('articles', 'popularArticles'));
     }
 }

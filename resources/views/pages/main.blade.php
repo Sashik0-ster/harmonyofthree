@@ -1,6 +1,7 @@
 <x-app>
 
-    <div class="mb-10 md:mb-10 sm:mb 10">
+    {{-- Найновші статті --}}
+    <div class="mb-10 sm:mb-10 md:mb-10">
         <div class="bg-accent py-1 px-2 mb-2 text-white rounded-sm">
             <span class="text-white text-sm font-bold">
                 Найновші статті
@@ -22,26 +23,27 @@
         </x-ui.carousel.carousel>
     </div>
 
-    <div class="mt-10 md:mb-10 sm:mb 10">
+    {{-- Популярні статті --}}
+    <div class="mt-10 sm:mb-10 md:mb-10">
         <div class="bg-accent py-1 px-2 mb-2 text-white rounded-sm">
             <span class="text-white text-sm font-bold">
                 Популярні статті
             </span>
         </div>
 
-        <x-ui.carousel>
-            @foreach ($articles as $article)
-                <x-ui.carousel.item :active="$loop->first" :title="$article->title">
-                    <x-article-card :article="$article" />
+        <x-ui.carousel.carousel>
+            @foreach ($popularArticles as $popularArticle)
+                <x-ui.carousel.item :active="$loop->first" :title="$popularArticle->title">
+                    <x-article-card :article="$popularArticle" />
                 </x-ui.carousel.item>
             @endforeach
 
             <x-slot:indicators>
-                @foreach ($articles as $index => $article)
+                @foreach ($popularArticles as $index => $popularArticle)
                     <x-ui.carousel.indicator :index="$index" :active="$index === 0" />
                 @endforeach
             </x-slot:indicators>
-        </x-ui.carousel>
+        </x-ui.carousel.carousel>
     </div>
 
 </x-app>

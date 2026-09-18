@@ -85,10 +85,10 @@ class Article extends Model
         return $query->where('is_featured', true);
     }
 
- public function views(): HasMany
-{
-    return $this->hasMany(ArticleView::class);
-}
+    public function views(): HasMany
+    {
+        return $this->hasMany(ArticleView::class);
+    }
 
     protected function imageUrl(): Attribute
     {
