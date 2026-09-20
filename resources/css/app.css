@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @source '../../resources/views/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -7,30 +8,21 @@
 @theme {
     /* Основна палітра */
     --color-accent: #CB9DF0;
-    /* фіолетовий — головний акцентний */
     --color-body: #FAF5FF;
-    /* магента — бейдж "Рекомендовано" */
     --color-soul: #F0C1E1;
-    /* рожевий — секція Soul */
     --color-mind: #B3BFFF;
-    /* periwinkle — секція Mind */
 
     /* Фонові / нейтральні */
     --color-surface: #FFF9BF;
-    /* жовтий — фон картки */
     --color-surface-light: #FFF58A;
-    /* світло-жовтий — hover/акцент фону */
     --color-highlight: #FFBBE1;
-    /* світло-рожевий — другорядний акцент */
     --color-peach: #FDDBBB;
-    /* персиковий — теплий нейтральний */
 
     /* Текст */
     --color-text: #3d2e42;
     --color-text-muted: #8a7d92;
 
     --color-nav: #B3BFFF;
-    /* колір навігації */
 }
 
 body {
@@ -44,7 +36,6 @@ body {
 main {
     flex: 1;
 }
-
 
 #logo {
     width: 50px;

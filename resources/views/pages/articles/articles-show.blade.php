@@ -4,9 +4,9 @@
         <x-post-hero :article="$article" />
 
         <div class="grid grid-cols-1 gap-1 mt-5">
-            <article class="prose">
-                {!! $article->content !!}
-            </article>
+            <div class="prose max-w-none text-text">
+                {!! Str::markdown($article->content) !!}
+            </div>
         </div>
     </div>
 </x-app>

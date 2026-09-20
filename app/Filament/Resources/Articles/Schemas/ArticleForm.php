@@ -11,6 +11,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Schemas\Schema;
 
 class ArticleForm
@@ -31,16 +32,19 @@ class ArticleForm
                     ->label('Заголовок')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 TextInput::make('slug')
                     ->label('Линк')
+                    ->unique()
                     ->required(),
                 Textarea::make('excerpt')
                     ->label('Опис')
                     ->default(null)
                     ->columnSpanFull(),
-                Textarea::make('content')
-                    ->label('Контетн')
+                MarkdownEditor::make('content')
+                    ->label('Контент')
+                    ->fileAttachmentsDisk('public_uploads')
+                    ->fileAttachmentsDirectory('form-attachments')
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image')
