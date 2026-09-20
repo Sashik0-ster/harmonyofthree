@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="rounded-lg overflow-hidden shadow-lg bg-surface flex flex-col">
+<div class="h-full rounded-lg overflow-hidden shadow-lg bg-surface flex flex-col">
 
     <div class="relative">
         <a href="{{ route('articles.show', [$article->section, $article]) }}" class="block">
@@ -27,12 +27,10 @@
 
     <div class="px-6 py-4">
         <a href="{{ route('articles.show', [$article->section, $article]) }}"
-            class="font-semibold text-lg text-text inline-block hover:text-accent transition duration-500 ease-in-out">
+            class="block line-clamp-2 min-h-14 font-semibold text-lg text-text hover:text-accent transition duration-500 ease-in-out">
             {{ $article->title }}
         </a>
-        <p class="text-text-muted text-sm">
-            {{-- {{ Str::limit(strip_tags($article->excerpt), 50) ?? Str::limit(strip_tags($article->content), 80) }} --}}
-
+        <p class="line-clamp-2 min-h-10 text-text-muted text-sm">
             {{ $article->excerpt ?? Str::limit(strip_tags($article->content), 80) }}
         </p>
     </div>

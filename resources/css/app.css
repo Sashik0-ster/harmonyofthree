@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@source '../../node_modules/flowbite/**/*.js';
+@source inline("-translate-x-full translate-x-full translate-x-0 z-10 z-20 z-30");
+
 @source '../../resources/views/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

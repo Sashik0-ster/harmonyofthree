@@ -2,7 +2,7 @@
 
 <div id="{{ $id }}" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="relative h-48 sm:h-64 md:h-96 rounded-2xl bg-surface overflow-hidden md:overflow-visible md:mb-20">
+    <div class="relative h-[24rem] md:h-[28rem] rounded-2xl bg-surface overflow-x-clip overflow-y-visible">
         {{ $slot }}
     </div>
 
@@ -16,7 +16,7 @@
 
     <!-- Slider controls -->
     <button type="button"
-        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none touch-manipulation"
+        class="absolute top-25 start-0 z-30 flex items-start justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none touch-manipulation"
         data-carousel-prev>
         <span
             class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-accent backdrop-blur-sm active:bg-accent/80 sm:group-hover:bg-accent/80 group-focus:ring-2 group-focus:ring-accent transition-colors">
@@ -29,7 +29,7 @@
         </span>
     </button>
     <button type="button"
-        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none touch-manipulation"
+        class="absolute top-25 end-0 z-30 flex items-start justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none touch-manipulation"
         data-carousel-next>
         <span
             class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-accent backdrop-blur-sm active:bg-accent/80 sm:group-hover:bg-accent/80 group-focus:ring-2 group-focus:ring-accent transition-colors">

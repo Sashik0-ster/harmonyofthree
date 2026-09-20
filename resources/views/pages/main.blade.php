@@ -1,7 +1,7 @@
 <x-app>
 
     {{-- Найновші статті --}}
-    <div class="mb-10 sm:mb-10 md:mb-10">
+    <div class="mb-10 sm:mb-5 md:mb-5">
         <div class="bg-accent py-1 px-2 mb-2 text-white rounded-sm">
             <span class="text-white text-sm font-bold">
                 Найновші статті
@@ -24,7 +24,7 @@
     </div>
 
     {{-- Популярні статті --}}
-    <div class="mt-10 sm:mb-10 md:mb-10">
+    <div class="mt-10 sm:mb-5 md:mb-5">
         <div class="bg-accent py-1 px-2 mb-2 text-white rounded-sm">
             <span class="text-white text-sm font-bold">
                 Популярні статті

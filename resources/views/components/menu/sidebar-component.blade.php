@@ -1,4 +1,4 @@
-<ul class="flex items-center justify-center w-full px-5 py-3">
+<ul class="flex items-center justify-center w-full px-5 py-3 gap-2">
     @foreach ($menuItems as $menuItem)
         @php
             $hasRoute = !empty($menuItem['route']) && Route::has($menuItem['route']);
@@ -9,12 +9,8 @@
                     (isset($article) && $article->section?->slug === ($menuItem['slug'] ?? null)));
         @endphp
 
-        <li class="flex">
+        <li class="flex border border-accent rounded-lg">
             <x-menu.sidebar-item :href="$url" :active="$isActive" class="inline-flex items-center">
-                @if (!empty($menuItem['icon']))
-                    <img src="{{ asset('img/menuicons/' . $menuItem['icon']) }}" class="w-4 h-4 shrink-0 mr-1"
-                        alt="{{ $menuItem['title'] }}">
-                @endif
                 <span class="flex items-start">{{ $menuItem['title'] }}</span>
             </x-menu.sidebar-item>
         </li>
