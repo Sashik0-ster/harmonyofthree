@@ -31,6 +31,8 @@
             {{ $article->title }}
         </a>
         <p class="text-text-muted text-sm">
+            {{-- {{ Str::limit(strip_tags($article->excerpt), 50) ?? Str::limit(strip_tags($article->content), 80) }} --}}
+
             {{ $article->excerpt ?? Str::limit(strip_tags($article->content), 80) }}
         </p>
     </div>
