@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class ProfileSettingController extends Controller
 {
     public function __construct(
@@ -27,7 +28,7 @@ class ProfileSettingController extends Controller
     {
         $userId = Auth::id();
 
-        if (!$userId) {
+        if (! $userId) {
             return redirect()->route('register');
         }
 
@@ -58,7 +59,7 @@ class ProfileSettingController extends Controller
         $data = $request->validated();
 
         $user = User::create([
-            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
         ]);
@@ -72,15 +73,21 @@ class ProfileSettingController extends Controller
 
     public function loginUser(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
             return back()
-                ->withErrors(['name' => 'Невірний name або пароль'])
-                ->onlyInput('name');
+                ->withErrors(['email' => 'Невірний email або пароль'])
+                ->onlyInput('email');
         }
 
         $request->session()->regenerate();
+
+        $user = auth()->user();
+
+        if ($user->hasRole('admin')) {
+            return redirect('/admin');
+        }
 
         return redirect()
             ->route('index')
@@ -97,4 +104,5 @@ class ProfileSettingController extends Controller
 
         return redirect()->route('index');
     }
+
 }

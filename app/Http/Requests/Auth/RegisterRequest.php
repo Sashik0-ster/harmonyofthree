@@ -5,6 +5,7 @@ namespace App\Http\Requests\Auth;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rule;
 
 class RegisterRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:20'],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($this->user)],
             'password' => ['required', 'string', 'confirmed', Password::defaults()],
         ];
     }
@@ -32,10 +33,8 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Введіть ваше ім\'я.',
-            'name.string' => 'Ім\'я має бути текстовим строком.',
-            'name.min' => 'Ім\'я повинно містити щонайменше :min символи.',
-            'name.max' => 'Ім\'я не повинно перевищувати :max символів.',
+            'email.required' => 'Введіть ваш email.',
+
 
             'password.required' => 'Введіть пароль.',
             'password.confirmed' => 'Паролі не співпадають.',

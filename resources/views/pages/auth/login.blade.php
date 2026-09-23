@@ -20,10 +20,10 @@
 
                 {{-- Ім'я --}}
                 <div class="flex flex-col gap-1">
-                    <label for="name" class="text-sm font-medium text-text">Ім'я</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}"
+                    <label for="email" class="text-sm font-medium text-text">Email</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}"
                         class="rounded-lg border-1 border-accent bg-body px-4 py-2 text-text" required>
-                    @error('name')
+                    @error('email')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
                 </div>

@@ -44,8 +44,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [ProfileSettingController::class, 'logout'])->name('logout');
 
-    Route::get('bookmark', [BookmarkController::class, 'index'])->name('bookmark');
-    Route::post('articles/{article}/bookmark', [BookmarkController::class, 'toggle'])->name('articles.bookmark');
+    Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmark');
+    Route::post('/articles/{article}/bookmark', [BookmarkController::class, 'toggle'])->name('articles.bookmark');
+
 });
 
 
@@ -53,6 +54,6 @@ Route::post('/telegram/auth', [TelegramAuthController::class, 'login'])
     ->name('telegram.login-via-initdata');
 
 
-    Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 'show'])
+Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 'show'])
     ->middleware('throttle:60,1')
     ->name('articles.show');

@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'string', 'min:8'],
         ];
     }
@@ -36,7 +36,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Введіть email',
+            'email.required' => 'Введіть ваш email.',
             'password.required' => 'Введіть пароль',
             'password.min' => 'Пароль має містити щонайменше 8 символів',
         ];

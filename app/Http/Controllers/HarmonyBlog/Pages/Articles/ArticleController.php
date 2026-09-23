@@ -12,7 +12,8 @@ class ArticleController extends Controller
 {
     public function __construct(
         protected ArticleService $articleService
-    ) {}
+    ) {
+    }
 
     /**
      * Відображає сторінку статті.
@@ -20,24 +21,28 @@ class ArticleController extends Controller
      * @param Section $section Автоматично прив'язується через {section:slug}
      * @param Article $article Автоматично прив'язується через {article:slug}
      */
-public function show(Section $section, Article $article, Request $request)
-{
-    $this->articleService->trackView($article, $request);
+    public function show(Section $section, Article $article, Request $request)
+    {
+        $this->articleService->trackView($article, $request);
 
-    $article->loadCount('views');
+        $article->loadCount('views');
 
-    $relatedArticles = Article::published()
-        ->withCount('views')
-        ->where('section_id', $article->section_id)
-        ->where('id', '!=', $article->id)
-        ->latest('published_at')
-        ->take(3)
-        ->get();
+        $isBookmarked = auth()->check()
+            && auth()->user()->bookmarks()->whereKey($article->id)->exists();
 
-    return view('pages.articles.articles-show', [
-        'section' => $section,
-        'article' => $article,
-        'relatedArticles' => $relatedArticles,
-    ]);
-}
+        $relatedArticles = Article::published()
+            ->withCount('views')
+            ->where('section_id', $article->section_id)
+            ->where('id', '!=', $article->id)
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+
+        return view('pages.articles.articles-show', [
+            'section' => $section,
+            'article' => $article,
+            'relatedArticles' => $relatedArticles,
+            'isBookmarked' => $isBookmarked,
+        ]);
+    }
 }
