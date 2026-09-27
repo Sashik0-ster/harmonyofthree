@@ -17,7 +17,7 @@ class ArticlesTable
     public static function configure(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $query) => $query->withCount('views'))
+            ->modifyQueryUsing(fn (Builder $query) => $query->withCount(['views', 'bookmarkedBy']))
             ->columns([
                 ImageColumn::make('image')
                     ->label('Зображення')
@@ -37,6 +37,10 @@ class ArticlesTable
                 TextColumn::make('views_count')
                     ->label('Перегляди')
                     ->numeric()
+                    ->sortable(),
+                TextColumn::make('bookmarked_by_count')
+                    ->label('Збережені')
+                    ->default(0)
                     ->sortable(),
                 TextColumn::make('published_at')
                     ->label('Дата створення')

@@ -11,7 +11,8 @@ class ArticleService
 {
     public function __construct(
         protected ArticleViewRepository $viewRepository
-    ) {}
+    ) {
+    }
 
     /**
      * Фіксує перегляд статті на основі поточного запиту.
@@ -40,13 +41,19 @@ class ArticleService
         );
     }
 
-    public function getViewsCount(Article $article): int
+    public function getViewsCount(?Article $article = null, ?string $startDate = null, ?string $endDate = null): int
     {
-        return $this->viewRepository->getViewsCount($article);
+        if ($article) {
+            return $this->viewRepository->getViewsCount($article);
+        }
+
+        // Якщо $article не передано, запитуємо загальну кількість із репозиторію
+        return $this->viewRepository->getTotalViewsCount($startDate, $endDate);
     }
 
     public function getMostViewed(int $limit = 5, ?Carbon $since = null)
     {
         return $this->viewRepository->getMostViewed($limit, $since);
     }
+
 }

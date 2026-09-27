@@ -19,10 +19,10 @@ class ArticleViewRepository
         }
 
         ArticleView::create([
-            'article_id'  => $article->id,
-            'user_id'     => $userId,
-            'session_id'  => $sessionId,
-            'ip_address'  => $ip,
+            'article_id' => $article->id,
+            'user_id' => $userId,
+            'session_id' => $sessionId,
+            'ip_address' => $ip,
         ]);
     }
 
@@ -69,5 +69,14 @@ class ArticleViewRepository
         }
 
         return $query->get();
+    }
+
+    public function getTotalViewsCount(?string $startDate = null, ?string $endDate = null): int
+    {
+        // Замініть ArticleView::query() на вашу модель/таблицю переглядів
+        return ArticleView::query()
+            ->when($startDate, fn ($query) => $query->whereDate('created_at', '>=', $startDate))
+            ->when($endDate, fn ($query) => $query->whereDate('created_at', '<=', $endDate))
+            ->count();
     }
 }
