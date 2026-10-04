@@ -1,4 +1,4 @@
-<ul class="flex items-center justify-center w-full px-5 py-2 gap-7">
+<ul class="flex items-center justify-center w-full pl-5 px-5 py-2 gap-3">
     @foreach ($navigationItems as $navigationItem)
         @php
             $hasRoute = !empty($navigationItem['route']) && Route::has($navigationItem['route']);
@@ -15,7 +15,7 @@
                     <img src="{{ asset('img/bottomnavbaricons/' . $navigationItem['icon']) }}" class="w-5 h-5"
                         alt="{{ $navigationItem['title'] }}">
                 @endif
-                <span class="flex items-center text-xs">{{ $navigationItem['title'] }}</span>
+                <span class="text-xs">{{ $navigationItem['title'] }}</span>
             </x-menu.bottom-navigation-item>
         </li>
     @endforeach
