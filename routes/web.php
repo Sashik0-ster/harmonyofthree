@@ -40,7 +40,7 @@ Route::post('login', [ProfileSettingController::class, 'loginUser'])->name('logi
 // Захищені сторінки (потребують авторизації користувача)
 Route::middleware('auth')->group(function () {
     Route::get('profilesetting', [ProfileSettingController::class, 'index'])->name('profilesetting');
-    Route::patch('profilesetting', [ProfileSettingController::class, 'update'])->name('profilesetting.update');
+    Route::patch('profilesetting', [ProfileSettingController::class, 'updateUser'])->name('profilesetting.update');
 
     Route::post('logout', [ProfileSettingController::class, 'logout'])->name('logout');
 

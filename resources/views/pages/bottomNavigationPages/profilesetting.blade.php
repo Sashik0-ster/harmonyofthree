@@ -67,16 +67,17 @@
             {{-- Статистика --}}
             <div class="grid grid-cols-3 gap-4 mt-8 px-8 py-4 border-t border-b border-accent/20 text-center">
                 <div>
-                    <span class="block text-xl font-bold text-accent">12K</span>
-                    <span class="text-xs text-text/70 font-medium lowercase">підписників</span>
+                    <span class="block text-xl font-bold text-accent">{{ auth()->user()->bookmarks()->count() }}</span>
+                    <span class="text-xs text-text/70 font-medium ">Збережених статей</span>
                 </div>
                 <div>
-                    <span class="block text-xl font-bold text-accent">67</span>
-                    <span class="text-xs text-text/70 font-medium lowercase">підписок</span>
+                    <span class="block text-xl font-bold text-accent">{{ auth()->user()->views()->count() }}</span>
+                    <span class="text-xs text-text/70 font-medium">Переглянуто статтей</span>
                 </div>
                 <div>
-                    <span class="block text-xl font-bold text-accent">37K</span>
-                    <span class="text-xs text-text/70 font-medium lowercase">вподобайок</span>
+                    <span
+                        class="block text-xl font-bold text-accent">{{ auth()->user()->created_at?->format('d.m.Y') ?? '—' }}</span>
+                    <span class="text-xs text-text/70 font-medium">Дата створення акаунта</span>
                 </div>
             </div>
 
@@ -101,11 +102,11 @@
                         @csrf
                         @method('PATCH')
 
-                        <div>
+                        {{-- <div>
                             <label class="block text-xs font-medium text-text/70 mb-1">Змінити фото профілю</label>
                             <input type="file" name="avatar" accept="image/*"
                                 class="px-5 py-1 bg-accent text-white text-xs rounded-lg hover:opacity-90">
-                        </div>
+                        </div> --}}
 
                         <div>
                             <label class="block text-xs font-medium text-text/70 mb-1">Ім'я</label>

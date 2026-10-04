@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'timestamps'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
 {
@@ -62,6 +62,10 @@ class User extends Authenticatable implements FilamentUser
     public function bookmarks(): BelongsToMany
     {
         return $this->belongsToMany(Article::class, 'bookmarks')->withTimestamps();
+    }
+    public function views(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, 'article_views')->withTimestamps();
     }
 
 }

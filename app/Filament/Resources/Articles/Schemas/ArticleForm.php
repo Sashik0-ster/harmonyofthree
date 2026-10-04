@@ -27,6 +27,11 @@ class ArticleForm
                 Select::make('author_id')
                     ->label('Автор')
                     ->relationship('author', 'name')
+                    ->getOptionLabelFromRecordUsing(
+                        fn ($record) => $record->name ?: ($record->email ?? 'Користувач #'.$record->id)
+                    )
+                    ->searchable()
+                    ->preload()
                     ->default(null),
                 TextInput::make('title')
                     ->label('Заголовок')
@@ -35,7 +40,7 @@ class ArticleForm
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 TextInput::make('slug')
                     ->label('Линк')
-                    ->unique()
+                    ->unique(ignoreRecord: true)
                     ->required(),
                 Textarea::make('excerpt')
                     ->label('Опис')

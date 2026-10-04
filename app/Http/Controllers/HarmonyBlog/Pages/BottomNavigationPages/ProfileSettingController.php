@@ -5,6 +5,7 @@ namespace App\Http\Controllers\HarmonyBlog\Pages\BottomNavigationPages;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\Contracts\ProfileRepositoryInterface;
 use Illuminate\Contracts\View\View;
@@ -92,6 +93,17 @@ class ProfileSettingController extends Controller
         return redirect()
             ->route('index')
             ->with('status', 'Вхід виконано успішно');
+    }
+
+    public function updateUser(UpdateUserRequest $request): RedirectResponse
+    {
+
+        $request->user()->update($request->validated());
+
+        return redirect()
+            ->route('profilesetting')
+            ->with('status', 'Профіль оновлено');
+
     }
 
     public function logout(Request $request): RedirectResponse
