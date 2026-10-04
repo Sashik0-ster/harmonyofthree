@@ -1,4 +1,4 @@
-<ul class="flex items-center justify-center w-full px-5 py-3 gap-2">
+<ul class="flex items-center justify-center w-full px-2 py-3 gap-2">
     @foreach ($menuItems as $menuItem)
         @php
             $hasRoute = !empty($menuItem['route']) && Route::has($menuItem['route']);

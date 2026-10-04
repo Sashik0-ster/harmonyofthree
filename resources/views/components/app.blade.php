@@ -16,11 +16,11 @@
 
 
     <div class="flex flex-col min-h-screen">
-        <div class="fixed top-0 left-0 right-0 z-50 justify-between rounded-b-xl bg-nav shadow-sm">
-            <div class="flex justify-between rounded-b-xl">
+        <nav class="fixed inset-x-0 top-0 z-50 rounded-b-xl bg-nav shadow-sm overflow-x-auto">
+            <div class="flex w-max min-w-full justify-start">
                 <x-menu.sidebar-component />
             </div>
-        </div>
+        </nav>
 
         <div class="flex justify-center">
             <x-layouts.header />
