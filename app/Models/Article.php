@@ -10,11 +10,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Laravel\Scout\Searchable;
 
 
 class Article extends Model
 {
     use HasFactory;
+    use Searchable;
 
     /**
      * Поля, дозволені для масового заповнення.
@@ -41,6 +44,17 @@ class Article extends Model
         'view_count' => 'integer',
         'published_at' => 'datetime',
     ];
+
+
+    #[SearchUsingFullText(['excerpt', 'content'])]
+    public function toSearchableArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'excerpt' => $this->excerpt,
+            'content' => $this->content,
+        ];
+    }
 
     /* -------------------------------------------------------------------------- */
     /*                                Зв'язки (Relations)                         */

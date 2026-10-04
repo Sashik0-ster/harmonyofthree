@@ -20,12 +20,15 @@ Route::post('telegram/webhook', [WebhookController::class, 'handle'])
 
 // Публічні сторінки (доступні всім)
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('search', [SearchController::class, 'index'])->name('search');
 Route::get('main', [MainController::class, 'index'])->name('main');
 Route::get('soul', [SoulController::class, 'index'])->name('soul');
 Route::get('body', [BodyController::class, 'index'])->name('body');
 Route::get('mind', [MindController::class, 'index'])->name('mind');
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
+
+Route::get('search', [SearchController::class, 'index'])
+    ->middleware('throttle:30,1')
+    ->name('search');
 
 // Статті
 Route::get('{section:slug}/articles/{article:slug}', [ArticleController::class, 'show'])
